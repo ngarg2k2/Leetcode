@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int smallestRepunitDivByK(int k) {
+        if(k==1){
+            return 1;
+        }
+        if(k%2==0){
+            return -1;
+        }
+        int num=0;
+        for(int i=1;i<=k;i++){
+            // num=num*10+1;
+            num = (num * 10) % k + (1 % k);
+            if(num%k==0){
+                return i;
+            }
+        }
+
+        return -1;
+    }
+};
