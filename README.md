@@ -1,1 +1,1 @@
-# Leetcode daily challenge question and practise questions
+# Leetcode daily challenge question and practice questions
