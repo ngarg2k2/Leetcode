@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int findKthPositive(vector<int>& arr, int k) {
+        vector<int>num;
+        int n=arr[arr.size()-1];
+        unordered_map<int,bool>um;
+        for(int i=0;i<arr.size();i++){
+            um[arr[i]]=true;
+        }
+        for(int i=1;i<=n+k;i++){
+            if(um[i]==false){
+                num.push_back(i);
+            }
+        }
+        for(auto i:num){
+            cout<<i<<" ";
+        }
+        cout<<endl;
+        cout<<num.size()<<endl;
+        return num[k-1];
+    }
+};
