@@ -1,0 +1,17 @@
+class Solution {
+public:
+    bool judgeSquareSum(int c) {
+        long long l=0;
+        long long h=sqrt(c);
+        while(h>=l){
+            if(l*l+h*h==c){
+                return true;
+            }else if(l*l+h*h>c){
+                h--;
+            }else{
+                l++;
+            }
+        }
+        return false;
+    }
+};
