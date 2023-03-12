@@ -1,0 +1,18 @@
+class Solution {
+public:
+    double average(vector<int>& salary) {
+        double ma=INT_MIN;
+        double mi=INT_MAX;
+        double total=0;
+        for(int i=0;i<salary.size();i++){
+            total=total+salary[i];
+            if(salary[i]>ma){
+                ma=salary[i];
+            }
+            if(salary[i]<mi){
+                mi=salary[i];
+            }
+        }
+        return (total-ma-mi)/(salary.size()-2);
+    }
+};
