@@ -1,0 +1,45 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* helper(vector<int>in,vector<int>post,int inS,int inE,int postS,int postE){
+        if(inS>inE){
+            return NULL;
+        }
+        int rootData=post[postE];
+        int rootIdx=-1;
+        for(int i=inS;i<=inE;i++){
+            if(in[i]==rootData){
+                rootIdx=i;
+                break;
+            }
+        }
+        int inLS=inS;
+        int inLE=rootIdx-1;
+        int inRS=rootIdx+1;
+        int inRE=inE;
+        int postLS=postS;
+        int postLE=postLS+inLE-inLS;
+        int postRS=postLE+1;
+        int postRE=postE-1;
+
+        TreeNode* root=new TreeNode(rootData);
+        root->left=helper(in,post,inLS,inLE,postLS,postLE);
+        root->right=helper(in,post,inRS,inRE,postRS,postRE);
+
+        return root;
+    }
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        int n=inorder.size();
+        return helper(inorder,postorder,0,n-1,0,n-1);
+    }
+};
