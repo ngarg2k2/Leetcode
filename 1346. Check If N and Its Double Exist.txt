@@ -1,0 +1,26 @@
+class Solution {
+public:
+    bool checkIfExist(vector<int>& arr) {
+        vector<int>tmp;
+        int count=0;
+        for(auto i:arr){
+            if(i==0){
+                count++;
+            }else if(i%2==0){
+                tmp.push_back(i/2);
+            }
+        }
+        if(count>=2){
+            return true;
+        }
+        for(auto i:tmp){
+            for(auto j:arr){
+                if(i==j){
+                    cout<<i<<" "<<j<<endl;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+};
