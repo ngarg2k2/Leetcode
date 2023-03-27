@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        if(ransomNote.length()>magazine.length()){
+            return false;
+        }
+        unordered_map<char,int>rn;
+        for(auto i:ransomNote){
+            rn[i]++;
+        }
+        unordered_map<char,int>m;
+        for(auto i:magazine){
+            m[i]++;
+        }
+        for(int i=0;i<ransomNote.length();i++){
+            if(m[ransomNote[i]]<rn[ransomNote[i]]){
+                return false;
+            }
+        }
+        return true;
+    }
+};
