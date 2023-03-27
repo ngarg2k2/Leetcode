@@ -1,0 +1,19 @@
+class Solution {
+public:
+    string kthDistinct(vector<string>& arr, int k) {
+        unordered_map<string,int>um;
+        for(auto i:arr){
+            um[i]++;
+        }
+        vector<string>tmp;
+        for(int i=0;i<arr.size();i++){
+            if(um[arr[i]]==1){
+                tmp.push_back(arr[i]);
+            }
+            if(tmp.size()==k){
+                return tmp[tmp.size()-1];
+            }
+        }
+        return "";
+    }
+};
