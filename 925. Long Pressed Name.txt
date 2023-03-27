@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool isLongPressedName(string name, string typed) {
+        if(name.length()>typed.length()){
+            return false;
+        }
+        int i=0;
+        int j=0;
+        int count=0;
+        char tmp='0';
+        for(;i<typed.length();){
+            if(name[j]==typed[i]){
+                count++;
+                tmp=name[j];
+                i++;
+                j++;
+            }else if(typed[i]==tmp){
+                i++;
+            }else{
+                return false;
+            }
+        }
+        if(count==name.length()){
+            return true;
+        }
+        return false;
+    }
+};
