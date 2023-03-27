@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int maximumValue(vector<string>& strs) {
+        long long ans=INT_MIN;
+        for(int i=0;i<strs.size();i++){
+           int count=0;
+           for(int j=0;j<strs[i].size();j++){
+               if(strs[i][j]>='0'&&strs[i][j]<='9'){
+                   count++;
+               }
+           }
+           long long tmp=0;
+           if(count==strs[i].size()){
+                tmp=stoll(strs[i]);
+           }else{
+               tmp=strs[i].size();
+           }
+           ans=max(ans,tmp);
+       } 
+       return ans;
+    }
+};
