@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool areOccurrencesEqual(string s) {
+        unordered_map<char,int>um;
+        for(auto i:s){
+            um[i]++;
+        }
+        int tmp=um[s[0]];
+        for(int i=1;i<s.length();i++){
+            if(um[s[i]]!=tmp){
+                return false;
+            }
+        }
+        return true;
+    }
+};
