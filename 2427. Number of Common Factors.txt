@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int commonFactors(int a, int b) {
+        int ans=0;
+        int ma=max(a,b);
+        int mi=min(a,b);
+        if(a==b){
+            ma=a*2;
+        }
+        for(int i=1;i<=ma/2;i++){
+            if(a%i==0&&b%i==0){
+                ans++;
+            }
+        }        
+
+        return ans;
+    }
+};
