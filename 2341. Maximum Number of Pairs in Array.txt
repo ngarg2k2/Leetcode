@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> numberOfPairs(vector<int>& nums) {
+        unordered_map<int,int>um;
+        set<int>s;
+        for(auto i:nums){
+            um[i]++;
+            s.insert(i);
+        }
+        int count=0;
+        int left=0;
+        for(auto i:s){
+            cout<<i<<endl;
+            if(um[i]%2==0){
+                count=count+um[i]/2;
+            }else{
+                count=count+um[i]/2;
+                left++;
+            }
+        }
+        return {count,left};
+    }
+};
