@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int findMiddleIndex(vector<int>& nums) {
+        int totalSum=0;
+        for(auto i:nums){
+            totalSum=totalSum+i;
+        }
+        int leftSum=0;
+        for(int i=0;i<nums.size();i++) {
+            totalSum=totalSum-nums[i];
+            cout<<totalSum<<" "<<leftSum<<endl;
+            if(leftSum==totalSum){
+                return i;
+            }
+            leftSum=leftSum+nums[i];
+        }
+        return -1;
+    }
+};
