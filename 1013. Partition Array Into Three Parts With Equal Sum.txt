@@ -1,0 +1,30 @@
+class Solution {
+public:
+    bool canThreePartsEqualSum(vector<int>& arr) {
+        long long sum=0;
+        for(auto i:arr){
+            sum=sum+i;
+        }
+        if(sum%3!=0){
+            return false;
+        }
+        long long tmp=sum/3;
+        bool first=false,second=false,third=false;
+        
+        long long preSum=0;
+        for(auto i:arr){
+            preSum=preSum+i;
+            if(first==false&&preSum==tmp){
+                first=true;
+            }else if(first==true&&second==false&&preSum==tmp*2){
+                second=true;
+            }else if(first==true&&second==true&&third==false&&preSum==tmp*3){
+                third=true;
+            }
+        }
+        if(first==true&&second==true&&third==true){
+            return true;
+        }
+        return false;
+    }
+};
