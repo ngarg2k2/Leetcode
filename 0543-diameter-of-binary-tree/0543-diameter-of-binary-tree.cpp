@@ -13,16 +13,16 @@ class Solution {
 public:
    int solve(TreeNode*root,int &sum)
    {
-       if(root==NULL){
-           return 0;
-       }
-       int left=solve(root->left,sum);
-       int right=solve(root->right,sum);
+        if(root==NULL){
+            return 0;
+        }
+        int left=solve(root->left,sum);
+        int right=solve(root->right,sum);
         sum= max(left+right,sum);
         return max(left,right)+1;
    }
     int diameterOfBinaryTree(TreeNode* root) {
-        if(root==nullptr){
+        if(root==NULL){
             return 0;
         }
         int ans=0;
