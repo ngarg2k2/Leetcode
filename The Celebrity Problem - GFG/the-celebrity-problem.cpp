@@ -14,38 +14,33 @@ class Solution
     int celebrity(vector<vector<int> >& M, int n) 
     {
         // code here 
-        vector<pair<int,int>>pp(n,pair<int,int>({0,0}));
+        stack<int>s;
+        for(int i=0;i<n;i++){
+            s.push(i);
+        }
+        while(s.size()!=1){
+            int a=s.top();
+            s.pop();
+            int b=s.top();
+            s.pop();
+            if(M[a][b]==1){
+                s.push(b);
+            }else{
+                s.push(a);
+            }
+        }
+        // cout<<s.top()<<endl;
+        for(int i=0;i<n;i++){
+            if(M[i][s.top()]==0&&s.top()!=i){
+                return -1;
+            }
+        }
         for(int j=0;j<n;j++){
-            int cnt=0;
-            for(int i=0;i<n;i++){
-                if(M[i][j]==1){
-                    cnt++;
-                }
-            }
-            if(cnt==n-1){
-                pp[j].first=1;
+            if(M[s.top()][j]==1){
+                return -1;
             }
         }
-        for(int i=0;i<n;i++){
-            int cnt=0;
-            for(int j=0;j<n;j++){
-                if(M[i][j]==1){
-                    cnt++;
-                }
-            }
-            if(cnt==0){
-                pp[i].second=1;
-            }
-        }
-        int ans=-1;
-        for(int i=0;i<n;i++){
-            if(pp[i].first==1&&pp[i].second==1){
-                ans=i;
-                break;
-            }
-            // cout<<pp[i].first<<" "<<pp[i].second<<endl;
-        }
-        return ans;
+        return s.top();
     }
 };
 
