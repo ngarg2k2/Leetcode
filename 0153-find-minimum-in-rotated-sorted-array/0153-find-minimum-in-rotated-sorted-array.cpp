@@ -15,6 +15,6 @@ public:
             }
             m=l+(h-l)/2;
         }
-        return nums[l];
+        return nums[m];
     }
 };
